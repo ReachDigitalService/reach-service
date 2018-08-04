@@ -8,6 +8,8 @@ import http from 'http'
 import { greet } from './test'
 import url from 'url'
 import stringDecoder from 'string_decoder'
+import {handlers} from './src/handler/index'
+import {router} from './src/router/index'
 
 
 //server to respond to requests
@@ -75,28 +77,3 @@ const server = http.createServer((req, res) => {
 //start the server and listen on port 5000
 server.listen(5000, () => console.log("Server started and listening on Port 5000"))
 
-
-//Define handler
-const handlers = {}
-
-//sample handler
-handlers.sample = (d, c) => {
-    //call back with http status code, and call back
-    c(406, { name: 'sampleHandler' })
-}
-
-//sample handler
-handlers.notFound = (d, c) => {
-    //call back with http status code, and call back
-    c(406)
-}
-
-
-//not found handler
-
-
-//routing requests
-
-const router = {
-    "sample": handlers.sample,
-}
